@@ -1,5 +1,4 @@
 c:\users\freddan962\documents\visual studio 2015\Projects\Launcher\Launcher\bin\Debug\Launcher.exe.config
-c:\users\freddan962\documents\visual studio 2015\Projects\Launcher\Launcher\obj\Debug\Launcher.csprojResolveAssemblyReference.cache
 c:\users\freddan962\documents\visual studio 2015\Projects\Launcher\Launcher\obj\Debug\Launcher.Form1.resources
 c:\users\freddan962\documents\visual studio 2015\Projects\Launcher\Launcher\obj\Debug\Launcher.Properties.Resources.resources
 c:\users\freddan962\documents\visual studio 2015\Projects\Launcher\Launcher\obj\Debug\Launcher.csproj.GenerateResource.Cache

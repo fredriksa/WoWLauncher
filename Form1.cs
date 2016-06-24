@@ -87,6 +87,7 @@ namespace Launcher
         public void addServer(Server server)
         {
             serverContainer.addServer(server);
+            patch(server);
         }
 
         private void websiteButton_Click(object sender, EventArgs e)
@@ -114,6 +115,7 @@ namespace Launcher
             selectedServer = (Server) server;
 
             Server srv = (Server)server;
+            patch(srv);
 
             Client.updateRealmlist(srv.clientDirectory, srv);
         }
@@ -169,7 +171,6 @@ namespace Launcher
                 {
                     try
                     {
-                        Console.WriteLine(URLFormatter.formatPingUrl(server.realmlist));
                         reply = ping.Send(URLFormatter.formatPingUrl(server.realmlist), 15);
                         status = reply.Status == IPStatus.Success;
                     } catch (Exception e){ }
@@ -199,6 +200,12 @@ namespace Launcher
             Server srv = (Server)selectedServer;
 
             Process.Start(srv.clientDirectory);
+        }
+
+        private void patch(Server server)
+        {
+            PatchDownloader downloader = new PatchDownloader(this);
+            downloader.patch(server);
         }
     }
 }

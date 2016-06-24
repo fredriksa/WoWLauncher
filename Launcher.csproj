@@ -73,8 +73,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Patch.cs" />
+    <Compile Include="PatchDownloader.cs" />
+    <Compile Include="PatchReader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceHelper.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="ServerContainer.cs" />
     <Compile Include="ServerDownloader.cs" />

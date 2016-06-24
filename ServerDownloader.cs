@@ -31,7 +31,7 @@ namespace Launcher
 
             using (WebClient webClient = new WebClient())
             {
-                if (!resourceExists(URLFormatter.format(url) + "/server.dat"))
+                if (!ResourceHelper.resourceExists(URLFormatter.format(url) + "/server.dat"))
                 {
                     form.downloadStatusLabel.Text = "Status: Server does not support the launcher's simple setup";
                     return;
@@ -62,29 +62,6 @@ namespace Launcher
 
             form.addServer("server.dat", directoryPath);
             stopWatch.Stop();
-        }
-
-        private bool resourceExists(string url)
-        {
-            HttpWebResponse response = null;
-            var request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "HEAD";
-
-            try
-            {
-                response = (HttpWebResponse)request.GetResponse();
-            }
-            catch (WebException ex)
-            {
-                return false;
-            }
-            finally
-            {
-                if (response != null)
-                    response.Close();
-            }
-
-            return true;
         }
     }
 }
