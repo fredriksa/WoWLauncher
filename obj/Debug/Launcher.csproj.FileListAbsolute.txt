@@ -1,0 +1,12 @@
+c:\users\freddan962\documents\visual studio 2015\Projects\Launcher\Launcher\bin\Debug\Launcher.exe.config
+c:\users\freddan962\documents\visual studio 2015\Projects\Launcher\Launcher\obj\Debug\Launcher.csprojResolveAssemblyReference.cache
+c:\users\freddan962\documents\visual studio 2015\Projects\Launcher\Launcher\obj\Debug\Launcher.Form1.resources
+c:\users\freddan962\documents\visual studio 2015\Projects\Launcher\Launcher\obj\Debug\Launcher.Properties.Resources.resources
+c:\users\freddan962\documents\visual studio 2015\Projects\Launcher\Launcher\obj\Debug\Launcher.csproj.GenerateResource.Cache
+c:\users\freddan962\documents\visual studio 2015\Projects\Launcher\Launcher\bin\Debug\Launcher.exe
+c:\users\freddan962\documents\visual studio 2015\Projects\Launcher\Launcher\bin\Debug\Launcher.pdb
+c:\users\freddan962\documents\visual studio 2015\Projects\Launcher\Launcher\obj\Debug\Launcher.exe
+c:\users\freddan962\documents\visual studio 2015\Projects\Launcher\Launcher\obj\Debug\Launcher.pdb
+C:\Users\Freddan962\Documents\Visual Studio 2015\Projects\Launcher\Launcher\obj\Debug\Launcher.AddServerForm.resources
+C:\Users\Freddan962\Documents\Visual Studio 2015\Projects\Launcher\Launcher\obj\Debug\Launcher.AddCustomServerForm.resources
+C:\Users\Freddan962\Documents\Visual Studio 2015\Projects\Launcher\Launcher\obj\Debug\Launcher.AddSimpleServerForm.resources
