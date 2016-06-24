@@ -33,6 +33,7 @@ namespace Launcher
                 writer.Write(server.downloadDirectory == null ? string.Empty : server.downloadDirectory);
                 writer.Write(server.realmlist);
                 writer.Write(server.clientDirectory);
+                writer.Write(server.locale);
             }
         }
     }

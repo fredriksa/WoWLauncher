@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Launcher
 {
@@ -38,6 +39,20 @@ namespace Launcher
             }
 
             return null;
+        }
+
+        public static string localeVersion(Server server)
+        {
+            if (server.version == "VANILLA")
+                return "default";
+
+            string[] locales = { "frFr", "deDE", "enGB", "enUS", "itIT", "koKR", "zhCN", "zhTW", "ruRU", "esES", "esMX", "ptBR" };
+
+            foreach (string locale in locales)
+                if (Directory.Exists($"{server.clientDirectory}/Data/{locale}"))
+                    return locale;
+
+            return string.Empty;
         }
     }
 }

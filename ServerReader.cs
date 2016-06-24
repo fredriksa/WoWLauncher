@@ -32,6 +32,7 @@ namespace Launcher
                     server.downloadDirectory = reader.ReadString();
                     server.realmlist = reader.ReadString();
                     server.clientDirectory = reader.ReadString();
+                    server.locale = reader.ReadString();
                     server.status = string.Empty;
 
                     list.Add(server);
@@ -55,11 +56,10 @@ namespace Launcher
                 server.downloadDirectory = reader.ReadString();
                 server.realmlist = reader.ReadString();
                 server.clientDirectory = reader.ReadString();
+                server.locale = ClientHelper.localeVersion(server);
 
                 return server;
             }
-
-            return null;
         }
 
         public static bool verifyVersion(BinaryReader reader)

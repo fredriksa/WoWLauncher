@@ -53,6 +53,7 @@ namespace Launcher
             server.downloadDirectory = string.Empty;
             server.realmlist = realmlistField.Text;
             server.clientDirectory = directoryPath;
+            server.locale = ClientHelper.localeVersion(server);
 
             form.addServer(server);
             addServerForm.Close();

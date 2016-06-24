@@ -46,6 +46,8 @@ namespace Launcher
 
             Server srv = (Server)server;
             srv.clientDirectory = directoryPath;
+            srv.locale = ClientHelper.localeVersion(srv);
+            Console.WriteLine($"Locale: {srv.locale}");
             servers.Add(srv);
             form.updateServerList();
         }
