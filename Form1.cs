@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.IO;
+using System.Net.NetworkInformation;
 
 namespace Launcher
 {
@@ -39,15 +40,17 @@ namespace Launcher
             serverList.Columns.Add("Name", columnWidth, HorizontalAlignment.Left);
             serverList.Columns.Add("Website", columnWidth, HorizontalAlignment.Left);
             serverList.Columns.Add("Version", columnWidth, HorizontalAlignment.Left);
-            serverList.Columns.Add("Realmlist", columnWidth, HorizontalAlignment.Left);
+            serverList.Columns.Add("Status", columnWidth, HorizontalAlignment.Left);
         }
 
         public void updateServerList()
         {
             serverList.Items.Clear();
 
+            updateStatus();
+
             foreach (Server server in serverContainer.getServers())
-                serverList.Items.Add(new ListViewItem(new[] { server.name, server.website, server.version, server.realmlist}));
+                serverList.Items.Add(new ListViewItem(new[] { server.name, server.website, server.version, server.status}));
         }
 
         private void addServerButton_Click(object sender, EventArgs e)
@@ -141,6 +144,36 @@ namespace Launcher
             if (!(serverContainer.getServers().Count > 0)) return;
 
             ServerWriter.write(serverContainer.getServers(), "local_servers.dat");
+        }
+
+        private void updateStatus()
+        {
+            List<Server> servers = serverContainer.getServers();
+            List<Server> iterateServers = new List<Server>(servers);
+
+            for (int i = 0; i  < iterateServers.Count; i++)
+            {
+                Server server = iterateServers[i];
+
+                PingReply reply;
+                bool status = false;
+
+                using (Ping ping = new Ping())
+                {
+                    try
+                    {
+                        Console.WriteLine(URLFormatter.formatPingUrl(server.realmlist));
+                        reply = ping.Send(URLFormatter.formatPingUrl(server.realmlist), 15);
+                        status = reply.Status == IPStatus.Success;
+                    } catch (Exception e){ }
+                }
+
+                Console.WriteLine(status ? "Online" : "Offline");
+                //servers.Remove(server);
+                serverContainer.updateStatus(server, status ? "Online" : "Offline");
+                //server.status = status ? "Online" : "Offline";
+                //servers.Add(server);
+            }
         }
     }
 }

@@ -30,6 +30,7 @@ namespace Launcher
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.playButton = new System.Windows.Forms.Button();
             this.deleteCacheButton = new System.Windows.Forms.Button();
             this.websiteButton = new System.Windows.Forms.Button();
@@ -149,6 +150,7 @@ namespace Launcher
             this.Controls.Add(this.websiteButton);
             this.Controls.Add(this.deleteCacheButton);
             this.Controls.Add(this.playButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Launcher";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);

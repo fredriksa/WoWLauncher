@@ -76,6 +76,24 @@ namespace Launcher
             return null;
         }
 
+        public void updateStatus(Server _server, string status)
+        {
+            Server? target = null;
+
+            foreach (Server server in servers)
+                if (server.name == _server.name)
+                    target = server;
+
+            if (target == null) return;
+
+            Server trgt = (Server)target;
+
+            servers.Remove(trgt);
+            trgt.status = status;
+            servers.Add(trgt);
+        }
+
         public List<Server> getServers() { return servers; }
+        public void setServers(List<Server> servers) { this.servers = servers;  }
     }
 }

@@ -15,5 +15,6 @@ namespace Launcher
         public string downloadDirectory;
         public string realmlist;
         public string clientDirectory;
+        public string status;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddCustomServerForm));
             this.versionLabel = new System.Windows.Forms.Label();
             this.versionCombo = new System.Windows.Forms.ComboBox();
             this.addButton = new System.Windows.Forms.Button();
@@ -140,6 +141,7 @@
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.websiteField);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddCustomServerForm";
             this.Text = "Add Server";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddCustomServerForm_FormClosed);

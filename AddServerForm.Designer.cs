@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddServerForm));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.fastSetupButton = new System.Windows.Forms.Button();
             this.customSetupButton = new System.Windows.Forms.Button();
@@ -66,6 +67,7 @@
             this.ClientSize = new System.Drawing.Size(284, 83);
             this.Controls.Add(this.customSetupButton);
             this.Controls.Add(this.fastSetupButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddServerForm";
             this.Text = "Add Server";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddServerForm_FormClosed);
