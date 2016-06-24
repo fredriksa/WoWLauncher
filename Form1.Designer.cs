@@ -122,7 +122,7 @@ namespace Launcher
             this.downloadStatusLabel.Name = "downloadStatusLabel";
             this.downloadStatusLabel.Size = new System.Drawing.Size(520, 13);
             this.downloadStatusLabel.TabIndex = 9;
-            this.downloadStatusLabel.Text = "Inactive";
+            this.downloadStatusLabel.Text = "Status: Inactive";
             this.downloadStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // removeServerButton

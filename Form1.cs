@@ -51,6 +51,8 @@ namespace Launcher
 
             foreach (Server server in serverContainer.getServers())
                 serverList.Items.Add(new ListViewItem(new[] { server.name, server.website, server.version, server.status}));
+
+            updateStatusColors();
         }
 
         private void addServerButton_Click(object sender, EventArgs e)
@@ -174,6 +176,20 @@ namespace Launcher
                 }
 
                 serverContainer.updateStatus(server, status ? "Online" : "Offline");
+            }
+        }
+
+        private void updateStatusColors()
+        {
+            foreach (ListViewItem item in serverList.Items)
+            {
+                item.UseItemStyleForSubItems = false;
+                var subItem = item.SubItems[3];
+
+                if (subItem.Text == "Online")
+                    subItem.ForeColor = Color.Green;
+                else if (subItem.Text == "Offline")
+                    subItem.ForeColor = Color.Red;
             }
         }
 
