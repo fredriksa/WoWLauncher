@@ -118,10 +118,9 @@ namespace Launcher
             // 
             // downloadStatusLabel
             // 
-            this.downloadStatusLabel.AutoSize = true;
-            this.downloadStatusLabel.Location = new System.Drawing.Point(250, 268);
+            this.downloadStatusLabel.Location = new System.Drawing.Point(22, 268);
             this.downloadStatusLabel.Name = "downloadStatusLabel";
-            this.downloadStatusLabel.Size = new System.Drawing.Size(45, 13);
+            this.downloadStatusLabel.Size = new System.Drawing.Size(520, 13);
             this.downloadStatusLabel.TabIndex = 9;
             this.downloadStatusLabel.Text = "Inactive";
             this.downloadStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
