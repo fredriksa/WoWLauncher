@@ -126,6 +126,11 @@ namespace Launcher
 
         private void playButton_Click(object sender, EventArgs e)
         {
+            if (selectedServer == null) return;
+
+            Server server = (Server)selectedServer;
+            Client.clearCache(ClientHelper.cacheFolderPath(server));
+
             Server srv = (Server)selectedServer;
             Process.Start(srv.clientDirectory + "/Wow.exe");
         }
@@ -168,11 +173,7 @@ namespace Launcher
                     } catch (Exception e){ }
                 }
 
-                Console.WriteLine(status ? "Online" : "Offline");
-                //servers.Remove(server);
                 serverContainer.updateStatus(server, status ? "Online" : "Offline");
-                //server.status = status ? "Online" : "Offline";
-                //servers.Add(server);
             }
         }
     }

@@ -26,14 +26,7 @@ namespace Launcher
         public static void clearCache(string directoryPath)
         {
             if (Directory.Exists(directoryPath))
-            {
                 DirectoryHelper.clearDirectory(directoryPath);
-                MessageBox.Show("Cache has been cleared");
-            }
-            else
-            {
-                MessageBox.Show("Cache folder doesn't exist");
-            }
         }
     }
 }
