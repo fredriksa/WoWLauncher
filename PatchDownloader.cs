@@ -141,13 +141,5 @@ namespace Launcher
                 using (var stream = File.OpenRead(filePath))
                     return md5.ComputeHash(stream);
         }
-
-        private void writeBytes(Byte[] arr)
-        {
-            foreach (byte b in arr)
-                Console.Write(b);
-
-            Console.WriteLine("");
-        }
     }
 }
