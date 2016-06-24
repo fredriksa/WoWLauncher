@@ -52,6 +52,7 @@ namespace Launcher
             server.patchesDirectory = string.Empty;
             server.downloadDirectory = string.Empty;
             server.realmlist = realmlistField.Text;
+            server.clientDirectory = directoryPath;
 
             form.addServer(server);
             addServerForm.Close();

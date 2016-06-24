@@ -13,6 +13,8 @@ namespace Launcher
         public static void updateRealmlist(string realmlist, string directoryPath)
         {
             string realmlistPath = directoryPath + "/data/realmlist.wtf";
+            if (!File.Exists(realmlistPath)) return;
+
             File.Delete(realmlistPath);
 
             using (StreamWriter file = new StreamWriter(realmlistPath, true))

@@ -126,5 +126,21 @@ namespace Launcher
             Server srv = (Server)selectedServer;
             Process.Start(srv.clientDirectory + "/Wow.exe");
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            if (File.Exists("local_servers.dat"))
+            {
+                serverContainer.addServers(ServerReader.readMultiple("local_servers.dat"));
+                updateServerList();
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!(serverContainer.getServers().Count > 0)) return;
+
+            ServerWriter.write(serverContainer.getServers(), "local_servers.dat");
+        }
     }
 }

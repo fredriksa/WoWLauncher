@@ -78,6 +78,7 @@
     <Compile Include="ServerContainer.cs" />
     <Compile Include="ServerDownloader.cs" />
     <Compile Include="ServerReader.cs" />
+    <Compile Include="ServerWriter.cs" />
     <Compile Include="URLFormatter.cs" />
     <Compile Include="Version.cs" />
     <EmbeddedResource Include="AddCustomServerForm.resx">

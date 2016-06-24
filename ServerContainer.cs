@@ -25,8 +25,7 @@ namespace Launcher
 
         public void addServer(string file)
         {
-            ServerReader reader = new ServerReader();
-            Server? server = reader.read(file);
+            Server? server = ServerReader.readSingle(file);
 
             if (server == null)
             {
@@ -41,7 +40,7 @@ namespace Launcher
         public void addServer(string file, string directoryPath)
         {
             ServerReader reader = new ServerReader();
-            Server? server = reader.read(file);
+            Server? server = ServerReader.readSingle(file);
 
             if (server == null)
             {
@@ -53,6 +52,11 @@ namespace Launcher
             srv.clientDirectory = directoryPath;
             servers.Add(srv);
             form.updateServerList();
+        }
+
+        public void addServers(List<Server> _servers)
+        {
+            servers.AddRange(_servers);
         }
 
         public void removeServer(string serverName)

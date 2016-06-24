@@ -10,9 +10,37 @@ namespace Launcher
 {
     class ServerReader
     {
-        private double formVersion = 1.0;
+        public static double version = 1.0;
 
-        public Nullable<Server> read(string fileName)
+        public static List<Server> readMultiple(string fileName)
+        {
+            List<Server> list = new List<Server>();
+
+            using (BinaryReader reader = new BinaryReader(new FileStream(fileName, FileMode.Open)))
+            {
+                if (!verifyVersion(reader)) return null;
+
+                int maxIterations = reader.ReadInt32();
+                for (int i = 0; i < maxIterations; i++)
+                {
+                    Server server = new Server();
+
+                    server.name = reader.ReadString();
+                    server.website = reader.ReadString();
+                    server.version = reader.ReadString();
+                    server.patchesDirectory = reader.ReadString();
+                    server.downloadDirectory = reader.ReadString();
+                    server.realmlist = reader.ReadString();
+                    server.clientDirectory = reader.ReadString();
+
+                    list.Add(server);
+                }
+            }
+
+            return list;
+        }
+
+        public static Nullable<Server> readSingle(string fileName)
         {
             using (BinaryReader reader = new BinaryReader(new FileStream(fileName, FileMode.Open)))
             {
@@ -33,16 +61,16 @@ namespace Launcher
             return null;
         }
 
-        private bool verifyVersion(BinaryReader reader)
+        public static bool verifyVersion(BinaryReader reader)
         {
             double serverDataVersion = reader.ReadDouble();
 
-            if (serverDataVersion != formVersion)
+            if (serverDataVersion != version)
             {
-                if (serverDataVersion > formVersion)
-                    MessageBox.Show("Error: server reader and server data version mismatch!\nServer data supports a later version of the launcher");
-                else if (serverDataVersion < formVersion)
-                    MessageBox.Show("Error: server reader and server data version mismatch!\nServer data supports a older version of the launcher");
+                if (serverDataVersion > version)
+                    MessageBox.Show($"Error: reader and data version mismatch!\nData supports a newer version of the launcher\nData version: {serverDataVersion} : Reader Version: {version}");
+                else if (serverDataVersion < version)
+                    MessageBox.Show($"Error: reader and data version mismatch!\nData supports a older version of the launcher\nData version: {serverDataVersion} : Reader Version: {version}");
 
                 return false;
             }
