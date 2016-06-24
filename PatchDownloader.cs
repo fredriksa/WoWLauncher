@@ -7,6 +7,8 @@ using System.ComponentModel;
 using System.Net;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Security.Cryptography;
+using System.IO;
 
 namespace Launcher
 {
@@ -101,11 +103,51 @@ namespace Launcher
             form.downloadStatusLabel.Text = "Status: Download complete";
             form.progressBar.Value = 0;
 
-            downloadPatches(PatchReader.readPatches("patchfile.dat"));
+            List<Patch> patches = patchFilesToPatch(PatchReader.readPatches("patchfile.dat"));
+            if (patches.Count > 0)
+                downloadPatches(patches);
 
             WebClient client = (WebClient)sender;
             client.CancelAsync();
             client.Dispose();
+        }
+
+        private List<Patch> patchFilesToPatch(List<Patch> patches)
+        {
+            List<Patch> patchesToPatch = new List<Patch>();
+
+            string dataDir = serverToDownload.clientDirectory + "/Data/";
+
+            foreach (Patch patch in patches)
+            {
+                string patchPath = dataDir + patch.fileName;
+
+                if (File.Exists(patchPath))
+                {
+                    if (computeHash(patchPath).SequenceEqual(patch.md5Hash))
+                        continue;
+                }
+
+
+                patchesToPatch.Add(patch);
+            }
+
+            return patchesToPatch;
+        }
+
+        private byte[] computeHash(string filePath)
+        {
+            using (var md5 = MD5.Create())
+                using (var stream = File.OpenRead(filePath))
+                    return md5.ComputeHash(stream);
+        }
+
+        private void writeBytes(Byte[] arr)
+        {
+            foreach (byte b in arr)
+                Console.Write(b);
+
+            Console.WriteLine("");
         }
     }
 }
