@@ -37,9 +37,11 @@ namespace Launcher
                     continue;
                 }
 
-                File.Move(files[i], destinationFile);
-
-                Console.WriteLine($"Moving {files[i]} to {destinationFile}");
+                try
+                {
+                    File.Move(files[i], destinationFile);
+                } catch (Exception e){ }
+                
             }
         }
 

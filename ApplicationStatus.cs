@@ -10,6 +10,7 @@ namespace Launcher
     {
         public static Server? activeServer;
         public static Server? lastActiveServer;
+        public static bool downloading = false;
 
         public static void updateActiveServer(Server server)
         {

@@ -186,7 +186,7 @@ namespace Launcher
 
         #endregion
 
-        private System.Windows.Forms.Button playButton;
+        public System.Windows.Forms.Button playButton;
         private System.Windows.Forms.Button deleteCacheButton;
         private System.Windows.Forms.Button websiteButton;
         public System.Windows.Forms.StatusStrip statusStrip1;

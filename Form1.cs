@@ -156,7 +156,9 @@ namespace Launcher
             if (!(serverContainer.getServers().Count > 0)) return;
 
             ServerWriter.write(serverContainer.getServers(), "local_servers.dat");
-            PatchMover.moveAway((Server)ApplicationStatus.activeServer);
+
+            if (ApplicationStatus.activeServer != null)
+                PatchMover.moveAway((Server)ApplicationStatus.activeServer);
         }
 
         private void updateStatus()
@@ -208,6 +210,9 @@ namespace Launcher
 
         private void patch()
         {
+            playButton.Text = "Downloading";
+            playButton.Enabled = false;
+
             PatchDownloader downloader = new PatchDownloader(this);
             downloader.patch((Server)ApplicationStatus.activeServer);
         }

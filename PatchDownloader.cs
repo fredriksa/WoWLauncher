@@ -37,14 +37,19 @@ namespace Launcher
 
             using (WebClient webClient = new WebClient())
             {
-                string patchFileURL = URLFormatter.format($"{server.downloadDirectory}/patchfile.dat");
+                string patchFileURL = URLFormatter.format($"{server.website}/{server.downloadDirectory}/patchfile.dat");
 
                 if (server.downloadDirectory == string.Empty || server.patchesDirectory == string.Empty ||
                     !ResourceHelper.resourceExists(patchFileURL))
                 {
                     form.downloadStatusLabel.Text = "Status: Server does not support the launcher's patcher";
+                    form.playButton.Text = "Play";
+                    form.playButton.Enabled = true;
+                    ApplicationStatus.downloading = false;
                     return;
                 }
+
+                ApplicationStatus.downloading = true;
 
                 webClient.DownloadProgressChanged += downloadPatchProgressChanged;
                 webClient.DownloadFileAsync(new System.Uri(patchFileURL), "patchfile.dat");
@@ -54,21 +59,26 @@ namespace Launcher
 
         public void downloadPatches(List<Patch> patches)
         {
+            form.playButton.Text = "Downloading";
+            form.playButton.Enabled = false;
+
             patchesToDownload = patches;
             downloadPatch(patchesToDownload[0]);
         }
 
         public void downloadPatch(Patch patch)
         {
-            string downloadURL = URLFormatter.format($"{serverToDownload.downloadDirectory}/");
+            string downloadURL = URLFormatter.format($"{serverToDownload.website}/{serverToDownload.downloadDirectory}/");
             using (WebClient webClient = new WebClient())
             {
-                string patchDownloadURL = downloadURL + patch.fileName;
+                string patchDownloadURL = downloadURL + "/" + patch.fileName;
                 if (!ResourceHelper.resourceExists(patchDownloadURL))
                 {
                     form.downloadStatusLabel.Text = $"Status: Could not download {patch.fileName} - It does not exist";
                     return;
                 }
+
+                ApplicationStatus.downloading = true;
 
                 webClient.DownloadProgressChanged += downloadPatchProgressChanged;
                 webClient.DownloadFileAsync(new System.Uri(patchDownloadURL), $"{serverToDownload.clientDirectory}/Data/{patch.fileName}");
@@ -83,7 +93,14 @@ namespace Launcher
         {
             form.progressBar.Value = e.ProgressPercentage;
             form.downloadStatusLabel.Text = $"{(e.BytesReceived / 1024f / 1024f).ToString("0.0")}Mb / {(e.TotalBytesToReceive / 1024f / 1024f).ToString("0.0")}Mb @ {(e.BytesReceived / 1024f / 1024f / stopWatch.Elapsed.TotalSeconds).ToString("0.0")} Mb/s Downloaded";
-        }
+
+            if (!ApplicationStatus.downloading && e.ProgressPercentage != 100)
+            {
+                form.playButton.Text = "Downloading";
+                form.playButton.Enabled = false;
+                ApplicationStatus.downloading = true;
+            }
+       }
 
         public void downloadPatchCompleted(object sender, AsyncCompletedEventArgs e)
         {
@@ -97,6 +114,9 @@ namespace Launcher
             else
             {
                 form.downloadStatusLabel.Text = "Status: Patching Complete";
+                form.playButton.Text = "Play";
+                form.playButton.Enabled = true;
+                ApplicationStatus.downloading = false;
                 form.progressBar.Value = 0;
             }
         }
@@ -111,6 +131,10 @@ namespace Launcher
             List<Patch> patches = patchFilesToPatch(PatchReader.readPatches("patchfile.dat"));
             if (patches.Count > 0)
                 downloadPatches(patches);
+
+            form.playButton.Enabled = true;
+            form.playButton.Text = "Play";
+            ApplicationStatus.downloading = false;
 
             WebClient client = (WebClient)sender;
             client.CancelAsync();
