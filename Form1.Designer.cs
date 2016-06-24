@@ -41,6 +41,7 @@ namespace Launcher
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.downloadStatusLabel = new System.Windows.Forms.Label();
             this.removeServerButton = new System.Windows.Forms.Button();
+            this.openButton = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,27 +50,27 @@ namespace Launcher
             this.playButton.Location = new System.Drawing.Point(569, 284);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(115, 23);
-            this.playButton.TabIndex = 0;
+            this.playButton.TabIndex = 6;
             this.playButton.Text = "Play";
             this.playButton.UseVisualStyleBackColor = true;
             this.playButton.Click += new System.EventHandler(this.playButton_Click);
             // 
             // deleteCacheButton
             // 
-            this.deleteCacheButton.Location = new System.Drawing.Point(569, 63);
+            this.deleteCacheButton.Location = new System.Drawing.Point(569, 161);
             this.deleteCacheButton.Name = "deleteCacheButton";
             this.deleteCacheButton.Size = new System.Drawing.Size(115, 23);
-            this.deleteCacheButton.TabIndex = 1;
+            this.deleteCacheButton.TabIndex = 4;
             this.deleteCacheButton.Text = "Delete Cache";
             this.deleteCacheButton.UseVisualStyleBackColor = true;
             this.deleteCacheButton.Click += new System.EventHandler(this.deleteCacheButton_Click);
             // 
             // websiteButton
             // 
-            this.websiteButton.Location = new System.Drawing.Point(569, 21);
+            this.websiteButton.Location = new System.Drawing.Point(569, 205);
             this.websiteButton.Name = "websiteButton";
             this.websiteButton.Size = new System.Drawing.Size(115, 23);
-            this.websiteButton.TabIndex = 2;
+            this.websiteButton.TabIndex = 5;
             this.websiteButton.Text = "Website";
             this.websiteButton.UseVisualStyleBackColor = true;
             this.websiteButton.Click += new System.EventHandler(this.websiteButton_Click);
@@ -91,10 +92,10 @@ namespace Launcher
             // 
             // addServerButton
             // 
-            this.addServerButton.Location = new System.Drawing.Point(569, 106);
+            this.addServerButton.Location = new System.Drawing.Point(569, 21);
             this.addServerButton.Name = "addServerButton";
             this.addServerButton.Size = new System.Drawing.Size(115, 23);
-            this.addServerButton.TabIndex = 6;
+            this.addServerButton.TabIndex = 1;
             this.addServerButton.Text = "Add Server";
             this.addServerButton.UseVisualStyleBackColor = true;
             this.addServerButton.Click += new System.EventHandler(this.addServerButton_Click);
@@ -127,13 +128,23 @@ namespace Launcher
             // 
             // removeServerButton
             // 
-            this.removeServerButton.Location = new System.Drawing.Point(569, 152);
+            this.removeServerButton.Location = new System.Drawing.Point(569, 68);
             this.removeServerButton.Name = "removeServerButton";
             this.removeServerButton.Size = new System.Drawing.Size(115, 23);
-            this.removeServerButton.TabIndex = 10;
+            this.removeServerButton.TabIndex = 2;
             this.removeServerButton.Text = "Remove Server";
             this.removeServerButton.UseVisualStyleBackColor = true;
             this.removeServerButton.Click += new System.EventHandler(this.deleteServerButton_Click);
+            // 
+            // openButton
+            // 
+            this.openButton.Location = new System.Drawing.Point(569, 115);
+            this.openButton.Name = "openButton";
+            this.openButton.Size = new System.Drawing.Size(115, 23);
+            this.openButton.TabIndex = 3;
+            this.openButton.Text = "Open Directory";
+            this.openButton.UseVisualStyleBackColor = true;
+            this.openButton.Click += new System.EventHandler(this.openButton_Click);
             // 
             // Form1
             // 
@@ -141,6 +152,7 @@ namespace Launcher
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(696, 345);
+            this.Controls.Add(this.openButton);
             this.Controls.Add(this.removeServerButton);
             this.Controls.Add(this.downloadStatusLabel);
             this.Controls.Add(this.progressBar);
@@ -174,6 +186,7 @@ namespace Launcher
         public System.Windows.Forms.ProgressBar progressBar;
         public System.Windows.Forms.Label downloadStatusLabel;
         private System.Windows.Forms.Button removeServerButton;
+        private System.Windows.Forms.Button openButton;
     }
 }
 

@@ -49,9 +49,12 @@ namespace Launcher
         public void downloadServerCompleted(object sender, AsyncCompletedEventArgs e)
         {
             form.downloadStatusLabel.Text = "Download complete";
+            form.progressBar.Value = 0;
+
             WebClient client = (WebClient)sender;
             client.CancelAsync();
             client.Dispose();
+
             form.addServer("server.dat", directoryPath);
             stopWatch.Stop();
         }

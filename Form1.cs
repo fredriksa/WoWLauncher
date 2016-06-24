@@ -38,8 +38,8 @@ namespace Launcher
 
             int columnWidth = 130;
             serverList.Columns.Add("Name", columnWidth, HorizontalAlignment.Left);
+            serverList.Columns.Add("Website", columnWidth, HorizontalAlignment.Left);
             serverList.Columns.Add("Version", columnWidth, HorizontalAlignment.Left);
-            serverList.Columns.Add("Locale", columnWidth, HorizontalAlignment.Left);
             serverList.Columns.Add("Status", columnWidth, HorizontalAlignment.Left);
         }
 
@@ -50,7 +50,7 @@ namespace Launcher
             updateStatus();
 
             foreach (Server server in serverContainer.getServers())
-                serverList.Items.Add(new ListViewItem(new[] { server.name, server.website, server.locale, server.status}));
+                serverList.Items.Add(new ListViewItem(new[] { server.name, server.website, server.version, server.status}));
         }
 
         private void addServerButton_Click(object sender, EventArgs e)
@@ -175,6 +175,14 @@ namespace Launcher
 
                 serverContainer.updateStatus(server, status ? "Online" : "Offline");
             }
+        }
+
+        private void openButton_Click(object sender, EventArgs e)
+        {
+            if (selectedServer == null) return;
+            Server srv = (Server)selectedServer;
+
+            Process.Start(srv.clientDirectory);
         }
     }
 }
