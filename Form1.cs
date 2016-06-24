@@ -79,6 +79,11 @@ namespace Launcher
             serverContainer.addServer("server.dat");
         }
 
+        public void addServer(string filename, string directoryPath)
+        {
+            serverContainer.addServer(filename, directoryPath);
+        }
+
         public void addServer(Server server)
         {
             serverContainer.addServer(server);
@@ -115,9 +120,15 @@ namespace Launcher
 
             Server server = (Server)selectedServer;
             Console.WriteLine(server.clientDirectory);
-            if (Directory.Exists(server.clientDirectory + "/Cache"))
-            {
+            string cacheDirectory = server.clientDirectory + "/Cache";
 
+            if (Directory.Exists(cacheDirectory))
+            {
+                DirectoryHelper.clearDirectory(cacheDirectory);
+                MessageBox.Show("Cache has been cleared");
+            } else
+            {
+                MessageBox.Show("Cache folder doesn't exist");
             }
         }
     }

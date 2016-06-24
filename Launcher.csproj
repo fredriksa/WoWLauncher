@@ -64,6 +64,7 @@
     <Compile Include="AddSimpleServerForm.Designer.cs">
       <DependentUpon>AddSimpleServerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DirectoryHelper.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

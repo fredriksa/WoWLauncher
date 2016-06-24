@@ -38,6 +38,23 @@ namespace Launcher
             form.updateServerList();
         }
 
+        public void addServer(string file, string directoryPath)
+        {
+            ServerReader reader = new ServerReader();
+            Server? server = reader.read(file);
+
+            if (server == null)
+            {
+                Console.WriteLine("COULD NOT LOAD SERVER");
+                return;
+            }
+
+            Server srv = (Server)server;
+            srv.clientDirectory = directoryPath;
+            servers.Add(srv);
+            form.updateServerList();
+        }
+
         public void removeServer(string serverName)
         {
             Server? removeTarget = null;

@@ -33,7 +33,7 @@ namespace Launcher
                 return;
 
             ServerDownloader downloader = new ServerDownloader(form);
-            downloader.downloadServer(websiteField.Text);
+            downloader.downloadServer(websiteField.Text, directoryPath);
             addServerForm.Close();
             this.Close();
         }

@@ -15,15 +15,20 @@ namespace Launcher
         private Form1 form;
         private Stopwatch stopWatch;
 
+        private string directoryPath;
+
         public ServerDownloader(Form1 form)
         {
             this.form = form;
             stopWatch = new Stopwatch();
             stopWatch.Stop();
+            directoryPath = string.Empty;
         }
 
-        public void downloadServer(string url)
+        public void downloadServer(string url, string directoryPath)
         {
+            this.directoryPath = directoryPath;
+
             using (WebClient webClient = new WebClient())
             {
                 form.downloadStatusLabel.Text = "Downloading " + url;
@@ -47,7 +52,7 @@ namespace Launcher
             WebClient client = (WebClient)sender;
             client.CancelAsync();
             client.Dispose();
-            form.addServer("server.dat");
+            form.addServer("server.dat", directoryPath);
             stopWatch.Stop();
         }
     }
