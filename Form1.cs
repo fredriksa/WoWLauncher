@@ -112,6 +112,10 @@ namespace Launcher
             if (server == null) return;
 
             selectedServer = (Server) server;
+
+            Server srv = (Server)server;
+
+            Client.updateRealmlist(srv.realmlist, srv.clientDirectory);
         }
 
         private void deleteCacheButton_Click(object sender, EventArgs e)
@@ -119,17 +123,7 @@ namespace Launcher
             if (selectedServer == null) return;
 
             Server server = (Server)selectedServer;
-            Console.WriteLine(server.clientDirectory);
-            string cacheDirectory = server.clientDirectory + "/Cache";
-
-            if (Directory.Exists(cacheDirectory))
-            {
-                DirectoryHelper.clearDirectory(cacheDirectory);
-                MessageBox.Show("Cache has been cleared");
-            } else
-            {
-                MessageBox.Show("Cache folder doesn't exist");
-            }
+            Client.clearCache(server.clientDirectory + "/Cache");
         }
     }
 }
