@@ -40,7 +40,7 @@
             this.addButton.Location = new System.Drawing.Point(12, 87);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(259, 23);
-            this.addButton.TabIndex = 5;
+            this.addButton.TabIndex = 3;
             this.addButton.Text = "Add Server";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
@@ -59,14 +59,14 @@
             this.websiteField.Location = new System.Drawing.Point(82, 21);
             this.websiteField.Name = "websiteField";
             this.websiteField.Size = new System.Drawing.Size(190, 20);
-            this.websiteField.TabIndex = 3;
+            this.websiteField.TabIndex = 1;
             // 
             // selectDirectoryButton
             // 
             this.selectDirectoryButton.Location = new System.Drawing.Point(15, 54);
             this.selectDirectoryButton.Name = "selectDirectoryButton";
             this.selectDirectoryButton.Size = new System.Drawing.Size(257, 23);
-            this.selectDirectoryButton.TabIndex = 6;
+            this.selectDirectoryButton.TabIndex = 2;
             this.selectDirectoryButton.Text = "Select WoW Directory";
             this.selectDirectoryButton.UseVisualStyleBackColor = true;
             this.selectDirectoryButton.Click += new System.EventHandler(this.selectDirectoryButton_Click);

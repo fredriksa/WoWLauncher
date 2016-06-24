@@ -56,14 +56,14 @@
             this.versionCombo.Location = new System.Drawing.Point(81, 82);
             this.versionCombo.Name = "versionCombo";
             this.versionCombo.Size = new System.Drawing.Size(190, 21);
-            this.versionCombo.TabIndex = 2;
+            this.versionCombo.TabIndex = 3;
             // 
             // addButton
             // 
             this.addButton.Location = new System.Drawing.Point(15, 199);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(259, 23);
-            this.addButton.TabIndex = 5;
+            this.addButton.TabIndex = 6;
             this.addButton.Text = "Add Server";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
@@ -82,7 +82,7 @@
             this.websiteField.Location = new System.Drawing.Point(81, 47);
             this.websiteField.Name = "websiteField";
             this.websiteField.Size = new System.Drawing.Size(190, 20);
-            this.websiteField.TabIndex = 1;
+            this.websiteField.TabIndex = 2;
             // 
             // label2
             // 
@@ -98,7 +98,7 @@
             this.nameField.Location = new System.Drawing.Point(81, 12);
             this.nameField.Name = "nameField";
             this.nameField.Size = new System.Drawing.Size(190, 20);
-            this.nameField.TabIndex = 0;
+            this.nameField.TabIndex = 1;
             // 
             // realmlistLabel
             // 
@@ -114,14 +114,14 @@
             this.realmlistField.Location = new System.Drawing.Point(81, 120);
             this.realmlistField.Name = "realmlistField";
             this.realmlistField.Size = new System.Drawing.Size(190, 20);
-            this.realmlistField.TabIndex = 3;
+            this.realmlistField.TabIndex = 4;
             // 
             // selectDirectory
             // 
             this.selectDirectory.Location = new System.Drawing.Point(15, 161);
             this.selectDirectory.Name = "selectDirectory";
             this.selectDirectory.Size = new System.Drawing.Size(259, 23);
-            this.selectDirectory.TabIndex = 4;
+            this.selectDirectory.TabIndex = 5;
             this.selectDirectory.Text = "Select WoW Directory";
             this.selectDirectory.UseVisualStyleBackColor = true;
             this.selectDirectory.Click += new System.EventHandler(this.selectDirectory_Click);

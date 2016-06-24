@@ -45,7 +45,7 @@
             this.fastSetupButton.Location = new System.Drawing.Point(12, 12);
             this.fastSetupButton.Name = "fastSetupButton";
             this.fastSetupButton.Size = new System.Drawing.Size(259, 23);
-            this.fastSetupButton.TabIndex = 2;
+            this.fastSetupButton.TabIndex = 1;
             this.fastSetupButton.Text = "Fast Setup";
             this.fastSetupButton.UseVisualStyleBackColor = true;
             this.fastSetupButton.Click += new System.EventHandler(this.fastSetupButton_Click);
@@ -55,7 +55,7 @@
             this.customSetupButton.Location = new System.Drawing.Point(13, 48);
             this.customSetupButton.Name = "customSetupButton";
             this.customSetupButton.Size = new System.Drawing.Size(259, 23);
-            this.customSetupButton.TabIndex = 3;
+            this.customSetupButton.TabIndex = 2;
             this.customSetupButton.Text = "Custom Setup";
             this.customSetupButton.UseVisualStyleBackColor = true;
             this.customSetupButton.Click += new System.EventHandler(this.customSetupButton_Click);
