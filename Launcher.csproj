@@ -65,6 +65,7 @@
       <DependentUpon>AddSimpleServerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Client.cs" />
+    <Compile Include="ClientHelper.cs" />
     <Compile Include="DirectoryHelper.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

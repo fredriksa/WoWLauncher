@@ -110,7 +110,7 @@ namespace Launcher
 
             Server srv = (Server)server;
 
-            Client.updateRealmlist(srv.realmlist, srv.clientDirectory);
+            Client.updateRealmlist(srv.clientDirectory, srv);
         }
 
         private void deleteCacheButton_Click(object sender, EventArgs e)
@@ -118,7 +118,7 @@ namespace Launcher
             if (selectedServer == null) return;
 
             Server server = (Server)selectedServer;
-            Client.clearCache(server.clientDirectory + "/Cache");
+            Client.clearCache(ClientHelper.cacheFolderPath(server));
         }
 
         private void playButton_Click(object sender, EventArgs e)

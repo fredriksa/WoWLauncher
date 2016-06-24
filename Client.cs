@@ -10,16 +10,16 @@ namespace Launcher
 {
     class Client
     {
-        public static void updateRealmlist(string realmlist, string directoryPath)
+        public static void updateRealmlist(string directoryPath, Server server)
         {
-            string realmlistPath = directoryPath + "/data/realmlist.wtf";
+            string realmlistPath = ClientHelper.realmlistPath(server);
             if (!File.Exists(realmlistPath)) return;
 
             File.Delete(realmlistPath);
 
             using (StreamWriter file = new StreamWriter(realmlistPath, true))
             {
-                file.WriteLine(realmlist);
+                file.WriteLine(server.realmlist);
             }
         }
 
