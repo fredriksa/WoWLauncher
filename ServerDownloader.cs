@@ -33,11 +33,10 @@ namespace Launcher
             {
                 if (!resourceExists(URLFormatter.format(url) + "/server.dat"))
                 {
-                    form.downloadStatusLabel.Text = "Server does not support launcher's simple setup";
+                    form.downloadStatusLabel.Text = "Server does not support the launcher's simple setup";
                     return;
                 }
 
-                form.downloadStatusLabel.Text = "Downloading " + url;
                 webClient.DownloadProgressChanged += downloadServerProgressChanged;
                 webClient.DownloadFileAsync(new System.Uri(URLFormatter.format(url) + "/server.dat"), "server.dat");
                 webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(this.downloadServerCompleted);
