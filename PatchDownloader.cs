@@ -80,8 +80,14 @@ namespace Launcher
 
                 ApplicationStatus.downloading = true;
 
+                string localPatchDirectory = $"{serverToDownload.clientDirectory}/Data/";
+                string localPatchPath = localPatchDirectory + patch.fileName;
+
+                if (!Directory.Exists(localPatchDirectory))
+                    Directory.CreateDirectory(localPatchDirectory);
+
                 webClient.DownloadProgressChanged += downloadPatchProgressChanged;
-                webClient.DownloadFileAsync(new System.Uri(patchDownloadURL), $"{serverToDownload.clientDirectory}/Data/{patch.fileName}");
+                webClient.DownloadFileAsync(new System.Uri(patchDownloadURL), localPatchPath);
                 webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(this.downloadPatchCompleted);
                 stopWatch.Start();
 
