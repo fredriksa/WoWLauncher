@@ -20,8 +20,10 @@ namespace Launcher
         public ServerContainer serverContainer;
 
         private Server? selectedServer;
-        private Stopwatch stopWatch;
+        private Timer timer;
         public AddServerForm addServerForm;
+
+        private int pingInterval = 20; //Pings every 2 seconds
 
         public Form1()
         {
@@ -32,8 +34,10 @@ namespace Launcher
             serverContainer = new ServerContainer(this);
             addServerForm = new AddServerForm(this);
 
-            stopWatch = new Stopwatch();
-            stopWatch.Stop();
+            timer = new Timer();
+            timer.Interval = pingInterval;
+            timer.Tick += new EventHandler(timerTick);
+            timer.Start();
 
             serverList.View = View.Details;
             serverList.MultiSelect = false;
@@ -55,6 +59,13 @@ namespace Launcher
                 serverList.Items.Add(new ListViewItem(new[] { server.name, server.website, server.version, server.status}));
 
             updateStatusColors();
+        }
+
+        private void timerTick(object sender, EventArgs e)
+        {
+            updateStatus();
+            updateStatusColors();
+            Console.WriteLine("UPDATED");
         }
 
         private void addServerButton_Click(object sender, EventArgs e)
