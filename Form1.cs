@@ -65,7 +65,6 @@ namespace Launcher
         {
             updateStatus();
             updateStatusColors();
-            Console.WriteLine("UPDATED");
         }
 
         private void addServerButton_Click(object sender, EventArgs e)
