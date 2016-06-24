@@ -32,6 +32,9 @@ namespace Launcher
         {
             serverToDownload = server;
 
+            if (ApplicationStatus.lastActiveServer != null)
+                PatchMover.moveAway((Server)ApplicationStatus.lastActiveServer);
+
             using (WebClient webClient = new WebClient())
             {
                 string patchFileURL = URLFormatter.format($"{server.downloadDirectory}/patchfile.dat");
@@ -89,7 +92,7 @@ namespace Launcher
 
             if (patchesToDownload.Count > 0)
             {
-                downloadPatch(patchesToDownload[0]);
+                downloadPatches(patchesToDownload);
             }
             else
             {
@@ -102,6 +105,8 @@ namespace Launcher
         {
             form.downloadStatusLabel.Text = "Status: Download complete";
             form.progressBar.Value = 0;
+
+            PatchMover.moveActive(serverToDownload);
 
             List<Patch> patches = patchFilesToPatch(PatchReader.readPatches("patchfile.dat"));
             if (patches.Count > 0)

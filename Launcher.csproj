@@ -64,6 +64,7 @@
     <Compile Include="AddSimpleServerForm.Designer.cs">
       <DependentUpon>AddSimpleServerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ApplicationStatus.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="ClientHelper.cs" />
     <Compile Include="DirectoryHelper.cs" />
@@ -75,6 +76,7 @@
     </Compile>
     <Compile Include="Patch.cs" />
     <Compile Include="PatchDownloader.cs" />
+    <Compile Include="PatchMover.cs" />
     <Compile Include="PatchReader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

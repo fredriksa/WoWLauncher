@@ -18,7 +18,7 @@ namespace Launcher
                     return server.clientDirectory + "/realmlist.wtf";
                     break;
                 case "WOTLK":
-                    return server.clientDirectory + "/Data/realmlist.wtf";
+                    return server.clientDirectory + "/Data/" + server.locale + "/realmlist.wtf";
                     break;
             }
 

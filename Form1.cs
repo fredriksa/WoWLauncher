@@ -27,6 +27,8 @@ namespace Launcher
         {
             InitializeComponent();
 
+            ApplicationStatus.activeServer = null;
+
             serverContainer = new ServerContainer(this);
             addServerForm = new AddServerForm(this);
 
@@ -87,7 +89,7 @@ namespace Launcher
         public void addServer(Server server)
         {
             serverContainer.addServer(server);
-            patch(server);
+            patch();
         }
 
         private void websiteButton_Click(object sender, EventArgs e)
@@ -115,7 +117,8 @@ namespace Launcher
             selectedServer = (Server) server;
 
             Server srv = (Server)server;
-            patch(srv);
+            ApplicationStatus.updateActiveServer(srv);
+            patch();
 
             Client.updateRealmlist(srv.clientDirectory, srv);
         }
@@ -153,6 +156,7 @@ namespace Launcher
             if (!(serverContainer.getServers().Count > 0)) return;
 
             ServerWriter.write(serverContainer.getServers(), "local_servers.dat");
+            PatchMover.moveAway((Server)ApplicationStatus.activeServer);
         }
 
         private void updateStatus()
@@ -202,10 +206,10 @@ namespace Launcher
             Process.Start(srv.clientDirectory);
         }
 
-        private void patch(Server server)
+        private void patch()
         {
             PatchDownloader downloader = new PatchDownloader(this);
-            downloader.patch(server);
+            downloader.patch((Server)ApplicationStatus.activeServer);
         }
     }
 }
