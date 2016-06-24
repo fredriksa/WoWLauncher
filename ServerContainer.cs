@@ -42,11 +42,7 @@ namespace Launcher
             ServerReader reader = new ServerReader();
             Server? server = ServerReader.readSingle(file);
 
-            if (server == null)
-            {
-                Console.WriteLine("COULD NOT LOAD SERVER");
-                return;
-            }
+            if (server == null) return;
 
             Server srv = (Server)server;
             srv.clientDirectory = directoryPath;
