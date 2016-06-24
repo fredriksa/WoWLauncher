@@ -50,11 +50,6 @@ namespace Launcher
                 serverList.Items.Add(new ListViewItem(new[] { server.name, server.website, server.version, server.realmlist}));
         }
 
-        private void launchgamebtn_Click(object sender, EventArgs e)
-        {
-            //Process.Start(clientDir + "/Wow.exe");
-        }
-
         private void addServerButton_Click(object sender, EventArgs e)
         {
             if (addServerForm == null)
@@ -124,6 +119,12 @@ namespace Launcher
 
             Server server = (Server)selectedServer;
             Client.clearCache(server.clientDirectory + "/Cache");
+        }
+
+        private void playButton_Click(object sender, EventArgs e)
+        {
+            Server srv = (Server)selectedServer;
+            Process.Start(srv.clientDirectory + "/Wow.exe");
         }
     }
 }
