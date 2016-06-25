@@ -21,6 +21,7 @@ namespace Launcher
 
         private Server? selectedServer;
         private Timer timer;
+        private Stopwatch downloadMessageWatch;
 
         public AddServerForm addServerForm;
         public EditServerForm editServerForm;
@@ -41,6 +42,9 @@ namespace Launcher
             timer.Interval = pingInterval * 1000;
             timer.Tick += new EventHandler(timerTick);
             timer.Start();
+
+            downloadMessageWatch = new Stopwatch();
+            downloadMessageWatch.Start();
 
             serverList.View = View.Details;
             serverList.MultiSelect = false;
@@ -82,6 +86,9 @@ namespace Launcher
         private void deleteServerButton_Click(object sender, EventArgs e)
         {
             if (!isServerSelected()) return;
+
+            if (isServerDownloading()) return;
+
             Server server = (Server)selectedServer;
 
             PatchDeleter.delete(server);
@@ -115,8 +122,18 @@ namespace Launcher
             System.Diagnostics.Process.Start(server.website);
         }
 
+        private void serverList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (ApplicationStatus.downloading)
+                if (e.IsSelected)
+                    e.Item.Selected = false;
+        }
+
         private void serverList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Console.WriteLine("CALLED");
+            if (isServerDownloading()) return;
+
             if (serverList.SelectedItems.Count <= 0) return;
 
             ListViewItem selectedItem = serverList.SelectedItems[0];
@@ -142,6 +159,8 @@ namespace Launcher
         {
             if (!isServerSelected()) return;
 
+            if (isServerDownloading()) return;
+
             Server server = (Server)selectedServer;
             Client.clearCache(ClientHelper.cacheFolderPath(server));
 
@@ -165,6 +184,12 @@ namespace Launcher
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (ApplicationStatus.downloading)
+            {
+               DialogResult result = MessageBox.Show("Application is currently downloading files - interrupting file download will destroy patch files and could dislocate patch files.\nDo you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result != DialogResult.Yes) return; 
+            }
+
             if (!(serverContainer.getServers().Count > 0)) return;
 
             ServerWriter.write(serverContainer.getServers(), "local_servers.dat");
@@ -229,6 +254,20 @@ namespace Launcher
             downloader.patch((Server)ApplicationStatus.activeServer);
         }
 
+
+        private void editServerButton_Click_1(object sender, EventArgs e)
+        {
+            if (!isServerSelected()) return;
+
+            if (isServerDownloading()) return;
+
+            if (editServerForm == null)
+                editServerForm = new EditServerForm(this);
+
+            if (!editServerForm.Visible)
+                editServerForm.Show();
+        }
+
         private bool isServerSelected()
         {
             if (selectedServer == null)
@@ -240,15 +279,19 @@ namespace Launcher
             return true;
         }
 
-        private void editServerButton_Click_1(object sender, EventArgs e)
+        private bool isServerDownloading()
         {
-            if (!isServerSelected()) return;
+            if (ApplicationStatus.downloading)
+            {
+                int elapsedSeconds = downloadMessageWatch.Elapsed.Seconds;
+                if (elapsedSeconds < 1) return true; 
 
-            if (editServerForm == null)
-                editServerForm = new EditServerForm(this);
+                MessageBox.Show("Can't perform action while server is downloading!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                downloadMessageWatch.Restart();
+                return true;
+            }
 
-            if (!editServerForm.Visible)
-                editServerForm.Show();
+            return false;
         }
     }
 }

@@ -109,6 +109,7 @@ namespace Launcher
             this.serverList.TabIndex = 7;
             this.serverList.UseCompatibleStateImageBehavior = false;
             this.serverList.SelectedIndexChanged += new System.EventHandler(this.serverList_SelectedIndexChanged);
+            this.serverList.ItemSelectionChanged += serverList_ItemSelectionChanged;
             // 
             // progressBar
             // 
