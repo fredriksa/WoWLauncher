@@ -56,7 +56,7 @@
             this.customSetupButton.Name = "customSetupButton";
             this.customSetupButton.Size = new System.Drawing.Size(259, 23);
             this.customSetupButton.TabIndex = 2;
-            this.customSetupButton.Text = "Custom Setup";
+            this.customSetupButton.Text = "Manual Setup";
             this.customSetupButton.UseVisualStyleBackColor = true;
             this.customSetupButton.Click += new System.EventHandler(this.customSetupButton_Click);
             // 
@@ -69,7 +69,7 @@
             this.Controls.Add(this.fastSetupButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddServerForm";
-            this.Text = "Add Server";
+            this.Text = "Add Fast Server";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddServerForm_FormClosed);
             this.ResumeLayout(false);
 

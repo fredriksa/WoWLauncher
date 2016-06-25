@@ -143,7 +143,7 @@
             this.Controls.Add(this.websiteField);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddCustomServerForm";
-            this.Text = "Add Server";
+            this.Text = "Add Manual Server";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddCustomServerForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
