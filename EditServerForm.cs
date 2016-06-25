@@ -89,6 +89,10 @@ namespace Launcher
             server.locale = ClientHelper.localeVersion(server);
 
             form.serverContainer.removeServer(activeServer.name);
+
+            ApplicationStatus.activeServer = server;
+            PatchDownloader.shouldMoveAway = false;
+
             form.addServer(server);
             form.updateServerList();
             this.Close();

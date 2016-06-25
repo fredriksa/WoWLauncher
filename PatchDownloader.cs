@@ -15,12 +15,14 @@ namespace Launcher
     class PatchDownloader
     {
         private Form1 form;
+
         private Stopwatch stopWatch = new Stopwatch();
-
         private string directoryPath;
-
         private Server serverToDownload;
         private List<Patch> patchesToDownload;
+
+        //When false skips one moveAway call
+        public static bool shouldMoveAway = true;
 
         public PatchDownloader(Form1 form)
         {
@@ -32,8 +34,10 @@ namespace Launcher
         {
             serverToDownload = server;
 
-            if (ApplicationStatus.lastActiveServer != null)
-                PatchMover.moveAway((Server)ApplicationStatus.lastActiveServer);
+            if (ApplicationStatus.oldServer != null && shouldMoveAway)
+                PatchMover.moveAway((Server)ApplicationStatus.oldServer);
+            else if (!shouldMoveAway)
+                shouldMoveAway = true;
 
             using (WebClient webClient = new WebClient())
             {

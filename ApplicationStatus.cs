@@ -9,13 +9,13 @@ namespace Launcher
     class ApplicationStatus
     {
         public static Server? activeServer;
-        public static Server? lastActiveServer;
+        public static Server? oldServer;
         public static bool downloading = false;
 
         public static void updateActiveServer(Server server)
         {
             if (activeServer != null)
-                lastActiveServer = activeServer;
+               oldServer = activeServer;
 
             activeServer = server;
         }
