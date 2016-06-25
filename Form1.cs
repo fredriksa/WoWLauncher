@@ -16,9 +16,10 @@ namespace Launcher
 {
     public partial class Form1 : Form
     {
-        public string clientDir;
-        public ServerContainer serverContainer;
 
+        public static double version = 1.0;
+
+        public ServerContainer serverContainer;
         private Server? selectedServer;
         private Timer timer;
         private Stopwatch downloadMessageWatch;
@@ -54,6 +55,8 @@ namespace Launcher
             serverList.Columns.Add("Website", columnWidth, HorizontalAlignment.Left);
             serverList.Columns.Add("Version", columnWidth, HorizontalAlignment.Left);
             serverList.Columns.Add("Status", columnWidth, HorizontalAlignment.Left);
+
+            VersionChecker.checkForNewVersion();
         }
 
         public void updateServerList()
@@ -125,7 +128,6 @@ namespace Launcher
 
         private void serverList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Console.WriteLine("CALLED");
             if (isServerDownloading()) return;
 
             if (serverList.SelectedItems.Count <= 0) return;

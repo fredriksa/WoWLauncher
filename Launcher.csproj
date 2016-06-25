@@ -95,6 +95,7 @@
     <Compile Include="ServerWriter.cs" />
     <Compile Include="URLFormatter.cs" />
     <Compile Include="Version.cs" />
+    <Compile Include="VersionChecker.cs" />
     <EmbeddedResource Include="AddCustomServerForm.resx">
       <DependentUpon>AddCustomServerForm.cs</DependentUpon>
     </EmbeddedResource>
