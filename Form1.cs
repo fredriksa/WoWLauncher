@@ -68,12 +68,6 @@ namespace Launcher
             updateStatusColors();
         }
 
-        private void timerTick(object sender, EventArgs e)
-        {
-            updateStatus();
-            updateStatusColors();
-        }
-
         private void addServerButton_Click(object sender, EventArgs e)
         {
             if (addServerForm == null)
@@ -266,6 +260,12 @@ namespace Launcher
 
             if (!editServerForm.Visible)
                 editServerForm.Show();
+        }
+
+        private void timerTick(object sender, EventArgs e)
+        {
+            updateStatus();
+            updateStatusColors();
         }
 
         private bool isServerSelected()
