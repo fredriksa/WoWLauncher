@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace Launcher
 {
@@ -33,7 +34,13 @@ namespace Launcher
                 string destinationFile = Path.Combine(destination, fileName);
                 if (File.Exists(destinationFile))
                 {
-                    File.Delete(files[i]);
+                    try
+                    {
+                        File.Delete(files[i]);
+                    } catch (System.IO.IOException e)
+                    {
+                        MessageBox.Show("Could not delete patch destination file!\n" + e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     continue;
                 }
 
@@ -55,7 +62,14 @@ namespace Launcher
             {
                 string filePath = files[i];
                 string destPath = Path.Combine(server.clientDirectory, "Data", Path.GetFileName(files[i]));
-                File.Move(filePath, destPath);
+
+                try
+                {
+                    File.Move(filePath, destPath);
+                } catch (Exception e)
+                {
+                    MessageBox.Show($"Error moving files - file already exists at destination\nPlease move/delete: {destPath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }   
         }
 

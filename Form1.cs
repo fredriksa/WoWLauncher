@@ -21,7 +21,9 @@ namespace Launcher
 
         private Server? selectedServer;
         private Timer timer;
+
         public AddServerForm addServerForm;
+        public EditServerForm editServerForm;
 
         private int pingInterval = 20;
 
@@ -33,6 +35,7 @@ namespace Launcher
 
             serverContainer = new ServerContainer(this);
             addServerForm = new AddServerForm(this);
+            editServerForm = new EditServerForm(this);
 
             timer = new Timer();
             timer.Interval = pingInterval * 1000;
@@ -135,19 +138,6 @@ namespace Launcher
             Client.updateRealmlist(srv.clientDirectory, srv);
         }
 
-        private void deleteCacheButton_Click(object sender, EventArgs e)
-        {
-            if (!isServerSelected()) return;
-
-            Server server = (Server)selectedServer;
-
-            string cacheDirectoryPath = ClientHelper.cacheFolderPath(server);
-            if (Directory.Exists(cacheDirectoryPath))
-                Client.clearCache(cacheDirectoryPath);
-            else
-                MessageBox.Show($"Could not find Cache folder!\n{cacheDirectoryPath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
         private void playButton_Click(object sender, EventArgs e)
         {
             if (!isServerSelected()) return;
@@ -248,6 +238,17 @@ namespace Launcher
             }
 
             return true;
+        }
+
+        private void editServerButton_Click_1(object sender, EventArgs e)
+        {
+            if (!isServerSelected()) return;
+
+            if (editServerForm == null)
+                editServerForm = new EditServerForm(this);
+
+            if (!editServerForm.Visible)
+                editServerForm.Show();
         }
     }
 }

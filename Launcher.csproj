@@ -68,6 +68,12 @@
     <Compile Include="Client.cs" />
     <Compile Include="ClientHelper.cs" />
     <Compile Include="DirectoryHelper.cs" />
+    <Compile Include="EditServerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditServerForm.Designer.cs">
+      <DependentUpon>EditServerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddSimpleServerForm.resx">
       <DependentUpon>AddSimpleServerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditServerForm.resx">
+      <DependentUpon>EditServerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

@@ -10,3 +10,4 @@ C:\Users\Freddan962\Documents\Visual Studio 2015\Projects\Launcher\Launcher\obj\
 C:\Users\Freddan962\Documents\Visual Studio 2015\Projects\Launcher\Launcher\obj\Debug\Launcher.AddCustomServerForm.resources
 C:\Users\Freddan962\Documents\Visual Studio 2015\Projects\Launcher\Launcher\obj\Debug\Launcher.AddSimpleServerForm.resources
 C:\Users\Freddan962\Documents\Visual Studio 2015\Projects\Launcher\Launcher\obj\Debug\Launcher.csprojResolveAssemblyReference.cache
+C:\Users\Freddan962\Documents\Visual Studio 2015\Projects\Launcher\Launcher\obj\Debug\Launcher.EditServerForm.resources

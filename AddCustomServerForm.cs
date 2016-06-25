@@ -88,6 +88,5 @@ namespace Launcher
         {
             addServerForm.customServerForm = null;
         }
-
     }
 }
