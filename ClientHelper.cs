@@ -15,10 +15,10 @@ namespace Launcher
             {
                 case "VANILLA":
                 case "TBC":
-                    return server.clientDirectory + "/realmlist.wtf";
+                    return Path.Combine(server.clientDirectory, "realmlist.wtf");
                     break;
                 case "WOTLK":
-                    return server.clientDirectory + "/Data/" + server.locale + "/realmlist.wtf";
+                    return Path.Combine(server.clientDirectory, "Data", server.locale, "realmlist.wtf");
                     break;
             }
 
@@ -30,11 +30,11 @@ namespace Launcher
             switch (server.version)
             {
                 case "VANILLA":
-                    return server.clientDirectory + "/WDB";
+                    return Path.Combine(server.clientDirectory + "WDB");
                     break;
                 case "TBC":
                 case "WOTLK":
-                    return server.clientDirectory + "/Cache";
+                    return Path.Combine(server.clientDirectory + "Cache");
                     break;
             }
 
@@ -49,7 +49,7 @@ namespace Launcher
             string[] locales = { "frFr", "deDE", "enGB", "enUS", "itIT", "koKR", "zhCN", "zhTW", "ruRU", "esES", "esMX", "ptBR" };
 
             foreach (string locale in locales)
-                if (Directory.Exists($"{server.clientDirectory}/Data/{locale}"))
+                if (Directory.Exists(Path.Combine(server.clientDirectory, "Data", locale)))
                     return locale;
 
             return string.Empty;

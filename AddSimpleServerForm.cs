@@ -29,8 +29,17 @@ namespace Launcher
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            if (directoryPath == string.Empty || websiteField.Text == string.Empty)
+            if (websiteField.Text == string.Empty)
+            {
+                MessageBox.Show("You must enter a website!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+
+            if (directoryPath == string.Empty)
+            {
+                MessageBox.Show("You must select a directory!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             ServerDownloader downloader = new ServerDownloader(form);
             downloader.downloadServer(websiteField.Text, directoryPath);

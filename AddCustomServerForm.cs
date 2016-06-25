@@ -38,11 +38,29 @@ namespace Launcher
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            if (nameField.Text == string.Empty || websiteField.Text == string.Empty)
+            if (nameField.Text == string.Empty)
+            {
+                MessageBox.Show("You must enter the server's name!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
 
-            if (realmlistField.Text == string.Empty || directoryPath == string.Empty)
+            if (websiteField.Text == string.Empty)
+            {
+                MessageBox.Show("You must enter a website!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+
+            if (realmlistField.Text == string.Empty)
+            {
+                MessageBox.Show("You must enter a realmlist!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (directoryPath == string.Empty)
+            {
+                MessageBox.Show("You must select a directory!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             Server server = new Server();
 

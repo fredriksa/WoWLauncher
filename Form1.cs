@@ -23,7 +23,7 @@ namespace Launcher
         private Timer timer;
         public AddServerForm addServerForm;
 
-        private int pingInterval = 20; //Pings every 2 seconds
+        private int pingInterval = 20;
 
         public Form1()
         {
@@ -35,7 +35,7 @@ namespace Launcher
             addServerForm = new AddServerForm(this);
 
             timer = new Timer();
-            timer.Interval = pingInterval;
+            timer.Interval = pingInterval * 1000;
             timer.Tick += new EventHandler(timerTick);
             timer.Start();
 
@@ -78,7 +78,7 @@ namespace Launcher
 
         private void deleteServerButton_Click(object sender, EventArgs e)
         {
-            if (selectedServer == null) return;
+            if (!isServerSelected()) return;
             Server server = (Server)selectedServer;
 
             selectedServer = null;
@@ -104,7 +104,7 @@ namespace Launcher
 
         private void websiteButton_Click(object sender, EventArgs e)
         {
-            if (selectedServer == null) return;
+            if (!isServerSelected()) return;
             Server server = (Server)selectedServer;
 
             System.Diagnostics.Process.Start(server.website);
@@ -135,21 +135,31 @@ namespace Launcher
 
         private void deleteCacheButton_Click(object sender, EventArgs e)
         {
-            if (selectedServer == null) return;
+            if (!isServerSelected()) return;
 
             Server server = (Server)selectedServer;
-            Client.clearCache(ClientHelper.cacheFolderPath(server));
+
+            string cacheDirectoryPath = ClientHelper.cacheFolderPath(server);
+            if (Directory.Exists(cacheDirectoryPath))
+                Client.clearCache(cacheDirectoryPath);
+            else
+                MessageBox.Show($"Could not find Cache folder!\n{cacheDirectoryPath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void playButton_Click(object sender, EventArgs e)
         {
-            if (selectedServer == null) return;
+            if (!isServerSelected()) return;
 
             Server server = (Server)selectedServer;
             Client.clearCache(ClientHelper.cacheFolderPath(server));
 
             Server srv = (Server)selectedServer;
-            Process.Start(srv.clientDirectory + "/Wow.exe");
+
+            string executablePath = Path.Combine(srv.clientDirectory, "Wow.exe");
+            if (File.Exists(executablePath))
+                Process.Start(executablePath);
+            else
+                MessageBox.Show($"Could not find World of Warcraft executable!\n{executablePath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -212,7 +222,7 @@ namespace Launcher
 
         private void openButton_Click(object sender, EventArgs e)
         {
-            if (selectedServer == null) return;
+            if (!isServerSelected()) return;
             Server srv = (Server)selectedServer;
 
             Process.Start(srv.clientDirectory);
@@ -225,6 +235,17 @@ namespace Launcher
 
             PatchDownloader downloader = new PatchDownloader(this);
             downloader.patch((Server)ApplicationStatus.activeServer);
+        }
+
+        private bool isServerSelected()
+        {
+            if (selectedServer == null)
+            {
+                MessageBox.Show("You must select a server before continuing.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            return true;
         }
     }
 }
