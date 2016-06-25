@@ -109,7 +109,6 @@ namespace Launcher
             this.serverList.TabIndex = 7;
             this.serverList.UseCompatibleStateImageBehavior = false;
             this.serverList.SelectedIndexChanged += new System.EventHandler(this.serverList_SelectedIndexChanged);
-            this.serverList.ItemSelectionChanged += serverList_ItemSelectionChanged;
             // 
             // progressBar
             // 
@@ -175,6 +174,7 @@ namespace Launcher
             this.Controls.Add(this.playButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Launcher 1.0 - Created by Fractional";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);

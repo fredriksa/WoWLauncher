@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddServerForm));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.fastSetupButton = new System.Windows.Forms.Button();
+            this.simpleSetupButton = new System.Windows.Forms.Button();
             this.customSetupButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -40,15 +40,15 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // fastSetupButton
+            // simpleSetupButton
             // 
-            this.fastSetupButton.Location = new System.Drawing.Point(12, 12);
-            this.fastSetupButton.Name = "fastSetupButton";
-            this.fastSetupButton.Size = new System.Drawing.Size(259, 23);
-            this.fastSetupButton.TabIndex = 1;
-            this.fastSetupButton.Text = "Fast Setup";
-            this.fastSetupButton.UseVisualStyleBackColor = true;
-            this.fastSetupButton.Click += new System.EventHandler(this.fastSetupButton_Click);
+            this.simpleSetupButton.Location = new System.Drawing.Point(12, 12);
+            this.simpleSetupButton.Name = "simpleSetupButton";
+            this.simpleSetupButton.Size = new System.Drawing.Size(259, 23);
+            this.simpleSetupButton.TabIndex = 1;
+            this.simpleSetupButton.Text = "Simple Setup";
+            this.simpleSetupButton.UseVisualStyleBackColor = true;
+            this.simpleSetupButton.Click += new System.EventHandler(this.fastSetupButton_Click);
             // 
             // customSetupButton
             // 
@@ -66,10 +66,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 83);
             this.Controls.Add(this.customSetupButton);
-            this.Controls.Add(this.fastSetupButton);
+            this.Controls.Add(this.simpleSetupButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddServerForm";
-            this.Text = "Add Fast Server";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Add Server";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddServerForm_FormClosed);
             this.ResumeLayout(false);
 
@@ -77,7 +78,7 @@
 
         #endregion
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Button fastSetupButton;
+        private System.Windows.Forms.Button simpleSetupButton;
         private System.Windows.Forms.Button customSetupButton;
     }
 }

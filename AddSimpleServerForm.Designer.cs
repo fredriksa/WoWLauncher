@@ -82,7 +82,8 @@
             this.Controls.Add(this.websiteField);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddSimpleServerForm";
-            this.Text = "Add Server";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Add Simple Server";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddSimpleServerForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
