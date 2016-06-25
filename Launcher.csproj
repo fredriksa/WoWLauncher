@@ -75,6 +75,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Patch.cs" />
+    <Compile Include="PatchDeleter.cs" />
     <Compile Include="PatchDownloader.cs" />
     <Compile Include="PatchMover.cs" />
     <Compile Include="PatchReader.cs" />

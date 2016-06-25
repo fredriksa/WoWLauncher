@@ -81,6 +81,8 @@ namespace Launcher
             if (!isServerSelected()) return;
             Server server = (Server)selectedServer;
 
+            PatchDeleter.delete(server);
+
             selectedServer = null;
             serverContainer.removeServer(server.name);
             updateServerList();
