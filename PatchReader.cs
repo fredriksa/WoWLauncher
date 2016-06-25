@@ -43,9 +43,9 @@ namespace Launcher
             if (serverDataVersion != version)
             {
                 if (serverDataVersion > version)
-                    MessageBox.Show($"Error: Patch reader and data version mismatch!\nPatch file supports a newer version of the launcher\nData version: {serverDataVersion} : Reader Version: {version}");
+                    MessageBox.Show($"Patch reader and data version mismatch!\nPatch file supports a newer version of the launcher\nData version: {serverDataVersion} : Reader Version: {version}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else if (serverDataVersion < version)
-                    MessageBox.Show($"Error: Patch reader and data version mismatch!\nPatch file supports a older version of the launcher\nData version: {serverDataVersion} : Reader Version: {version}");
+                    MessageBox.Show($"Patch reader and data version mismatch!\nPatch file supports a older version of the launcher\nData version: {serverDataVersion} : Reader Version: {version}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return false;
             }
