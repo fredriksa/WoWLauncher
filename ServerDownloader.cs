@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace Launcher
 {
@@ -33,7 +34,7 @@ namespace Launcher
             {
                 if (!ResourceHelper.resourceExists(URLFormatter.format(url) + "/server.dat"))
                 {
-                    form.downloadStatusLabel.Text = "Status: Server does not support the launcher's simple setup";
+                    MessageBox.Show("Server does not support the launcher's simple setup", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 

@@ -18,7 +18,7 @@ namespace Launcher
             if (!Regex.Match(url, httpPattern).Success)
                 url = "http://" + url;
 
-            return url;
+            return Regex.Replace(url, " ", "");
         }
 
         public static string formatPingUrl(string url)
