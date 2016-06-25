@@ -127,5 +127,10 @@ namespace Launcher
                     break;
             }
         }
+
+        private void EditServerForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            form.editServerForm = null;
+        }
     }
 }
